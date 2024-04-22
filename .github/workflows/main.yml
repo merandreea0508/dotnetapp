@@ -30,4 +30,4 @@ jobs:
       run: dotnet test --no-restore --verbosity normal
 
     - name: Run Application
-      run: dotnet run --no-build --project ./HelloWorldWebApp.csproj
+      run: dotnet run 
