@@ -19,9 +19,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '8.0.204' 
-    
-    - name: Install libicu
-      run: sudo apt-get install -y libicu-dev 
 
     - name: Restore dependencies
       run: dotnet restore
@@ -31,6 +28,7 @@ jobs:
 
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-
-    - name: Run Application
-      run: dotnet run --project ./HelloWorldWebApp.csproj --no-build
+      
+    - name: Run Application with Invariant mode
+      run: dotnet run --project ./HelloWorldWebApp.csproj --no-build --configuration Release -- \
+        /p:GlobalizationInvariant=true
